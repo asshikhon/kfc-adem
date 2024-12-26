@@ -18,7 +18,7 @@ const SocialSignIn = () => {
 
     useEffect(() => {
         if (status === 'authenticated') {
-            // router.push('/');
+            router.push('/');
         }
     }, [status, router]); 
 

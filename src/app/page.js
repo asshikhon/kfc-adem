@@ -1,8 +1,10 @@
+import Banner from "@/components/Banner";
 
 export default function Home() {
   return (
-    <div className="">
-      <h1 className="text-6xl text-center font-bold">Welcome to Next.js!</h1>
+    <div className="container mx-auto ">
+
+<Banner />
     </div>
   );
 }
