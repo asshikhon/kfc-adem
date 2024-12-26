@@ -8,19 +8,17 @@ const SocialSignIn = () => {
     const router = useRouter();
     const { data: session, status } = useSession();
 
+    console.log( status, session);
+
+
     const handleSocialLogin = async (provider) => {
-        try {
-            console.log('called');
-            const resp = await signIn(provider, { redirect: false });
-            console.log("Social login response status:", resp?.status); 
-        } catch (error) {
-            console.error("Error during social login:", error);
-        }
+        console.log('called');
+        const resp = await signIn(provider, { redirect: false });
     };
 
     useEffect(() => {
-        if (status === 'authenticated' && router.pathname !== '/') {
-            router.push('/');
+        if (status === 'authenticated') {
+            // router.push('/');
         }
     }, [status, router]); 
 
@@ -36,6 +34,8 @@ const SocialSignIn = () => {
                         <i className="fab fa-google"></i>
                         <span>Google</span>
                     </button>
+
+                
                 </div>
             </div>
         </div>

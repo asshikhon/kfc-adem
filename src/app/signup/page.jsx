@@ -1,12 +1,11 @@
 "use client"
-
-import { signIn, useSession } from "next-auth/react";
+import SocialSignIn from "@/components/SocialSignIn";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 const Register = () => {
   const router = useRouter();
-  const { status } = useSession();
 
   const handleSignUp = async (event) => {
     event.preventDefault();
@@ -45,26 +44,6 @@ const Register = () => {
     }
   };
 
-  const handleSocialLogin = async (provider) => {
-    try {
-      console.log("Social login called");
-      const resp = await signIn(provider, { redirect: false });
-      console.log("Social login response:", resp);
-
-      if (resp?.ok) {
-        // router.push("/");
-      }
-    } catch (error) {
-      console.error("Error during social login:", error);
-    }
-  };
-
-  useEffect(() => {
-    if (status === "authenticated") {
-      // router.push("/");
-    }
-  }, [status, router]);
-
   return (
     <div
       className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center"
@@ -73,13 +52,11 @@ const Register = () => {
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      <div className="relative w-full max-w-sm bg-white rounded-lg shadow-md p-6">
+      <div className="relative w-full max-w-sm bg-white  rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-semibold text-center text-gray-700">Create an Account</h2>
         <form onSubmit={handleSignUp} className="mt-4 space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-600">
-              Full Name
-            </label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-600">Full Name</label>
             <input
               type="text"
               id="name"
@@ -89,9 +66,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-600">
-              Email
-            </label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-600">Email</label>
             <input
               type="email"
               id="email"
@@ -101,9 +76,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-600">
-              Password
-            </label>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-600">Password</label>
             <input
               type="password"
               id="password"
@@ -113,9 +86,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-600">
-              Confirm Password
-            </label>
+            <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-600">Confirm Password</label>
             <input
               type="password"
               id="confirm-password"
@@ -131,18 +102,7 @@ const Register = () => {
             Register
           </button>
         </form>
-        <div className="mt-4">
-          <p className="text-center text-sm text-gray-600">Or sign in with</p>
-          <div className="flex justify-center space-x-4 mt-3">
-            <button
-              onClick={() => handleSocialLogin("google")}
-              className="flex items-center space-x-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
-            >
-              <i className="fab fa-google"></i>
-              <span>Google</span>
-            </button>
-          </div>
-        </div>
+        <SocialSignIn />
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
           <a href="/login" className="text-blue-600 hover:underline">
