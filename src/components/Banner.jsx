@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Banner = () => {
   return (
     <div
-      className="relative h-[60vh] bg-cover bg-center bg-no-repeat"
+      className="relative h-[60vh] bg-cover bg-center bg-no-repeat rounded-xl overflow-hidden"
       style={{
         backgroundImage: "url('https://i.ibb.co/sRJw40J/banner.jpg')",
         backgroundSize: "cover",
