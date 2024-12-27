@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           {/* Logo */}
           <div className="flex items-center">
-            <h2 className="font-bold text-3xl text-orange-500">KFC Adem</h2>
+            <h2 className="font-bold text-3xl text-orange-500">Яндекс @ Еда</h2>
           </div>
 
           <div className="hidden md:flex items-center ">
