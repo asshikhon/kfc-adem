@@ -37,7 +37,7 @@ const Menu = () => {
   }, []);
 
   return (
-    <menu className="text-black w-64 p-6 rounded-md">
+    <menu className="text-black w-64 p-6 rounded-md mb-12">
       {/* Title */}
       <h2 className="text-2xl font-semibold mb-4">Menu</h2>
 

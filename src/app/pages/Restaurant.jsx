@@ -106,7 +106,7 @@ const items2 = [
 ]
 
   return (
-    <div className="flex justify-between pt-6">
+    <div className="flex justify-between pt-6 mb-44">
       <section className="w-[20%] px-12 min-h-screen ">
         <SideNav />
       </section>
