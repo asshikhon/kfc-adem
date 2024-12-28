@@ -1,32 +1,36 @@
+import Image from "next/image";
 import React from "react";
 
-const Section = ({ id }) => {
+const Section = ({ id ,items }) => {
+
+console.log(items);
+
+
   return (
     <div id={id}>
-      <h2 className="text-xl font-semibold">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni,
-        consectetur?
-      </h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis animi
-        natus culpa sunt amet voluptate eligendi consequatur, officiis explicabo
-        rerum quo numquam temporibus illum, soluta doloremque harum laboriosam a
-        totam magnam quae eaque minus ex tempora. Veniam facilis tempore cumque
-        perferendis ullam repellat dicta enim cum dignissimos, quos hic debitis!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque
-        asperiores sed pariatur voluptas reiciendis nulla in dolore laboriosam
-        reprehenderit? Eius, quod? Recusandae impedit deleniti ea nulla
-        cupiditate dolorem similique illo dolores eius, eos nemo voluptatem esse
-        deserunt quasi eveniet nam! Quaerat ipsa debitis sed dignissimos qui
-        corporis quidem! Officia ab dolorem rerum dolores natus nulla est quo
-        saepe modi architecto minima mollitia sapiente a, magnam dolor facilis?
-        Dolorum ipsum asperiores exercitationem facilis culpa cumque delectus
-        quibusdam ducimus, nostrum laborum sit quidem quis, assumenda quaerat
-        odio, voluptate inventore nam repellat atque? Eum ipsum necessitatibus
-        totam error animi dolore labore! Ipsum, repellat? Lorem ipsum dolor sit
-      
-        iure molestiae?
-      </p>
+<h2 className="text-xl text-black font-semibold mb-8">
+  {id.charAt(0).toUpperCase() + id.slice(1)}
+</h2>
+<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 text-black">
+{
+        items?.map((item, index) => (
+          <div key={index} className="flex rounded-xl justify-between flex-col shadow-lg  p-3">
+           
+<div className="flex items-center justify-center">
+<Image className="rounded-xl" src={item?.image} alt="image" width={150} height={150} />
+</div>            <p className="text-start text-xl font-bold">
+              ${item?.price}₸
+            </p>
+                <h3 className="text-sm font-semibold">{item?.name}</h3>
+            
+         
+        
+
+            <button className="btn btn-outline mt-1 ">+ Add</button>
+          </div>
+        ))
+      }
+</div>
     </div>
   );
 };
